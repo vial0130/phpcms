@@ -5,10 +5,9 @@
  * ======================================================================== */
 //系统当前时间
 define('TIME',$_SERVER['REQUEST_TIME']);
-
 //系统路径
 define('CORE',PHPCMS.'/core/');#核心库
-define('ASSIGN',PHPCMS.'/assign/');#资源库
+define('ASSIGN',MODULE.'assign/');#资源库
 //加载公共函数库
 include CORE.'function/function.php';
 //加载核心文件

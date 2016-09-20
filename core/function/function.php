@@ -4,6 +4,7 @@
  * ======================================================================== */
 /**
  * 自定义的数组或变量的展现方式
+ * @param string $var
  */
 function dump($var)
 {
@@ -17,66 +18,20 @@ function dump($var)
 }
 
 /**
- * 获取get数据
- * @param $str 变量名
- * @param $filter 过滤方式 int为只支持int类型
- * @param $default 默认值 当获取不到值时,所返回的默认值
- * @return
+ * 生成唯一字符串
+ * @return string
  */
-function get($str='false',$filter = '',$default = false)
-{
-    if($str !== false)
-    {
-        $return = isset($_GET[$str])?$_GET[$str]:false;
-        if($return) {
-            switch ($filter) {
-                case 'int':
-                    if (!is_numeric($return)) {
-                        return $default;
-                    }
-                    break;
-                default:
-                    $return = htmlspecialchars($return);
-
-            }
-            return $return;
-        } else {
-            return $default;
-        }
-    } else {
-        return $_GET;
-    }
+function md5Uniqid(){
+	return md5(uniqid(microtime(true),true));
 }
+
 
 /**
- * 获取post数据
- * @param $str 变量名
- * @param $filter 过滤方式 int为只支持int类型
- * @param $default 默认值 当获取不到值时,所返回的默认值
- * @return
+ * 得到文件的扩展名
+ * @param string $name 当前字符串
+ * @param string $type 截取最后的
+ * @return string
  */
-function post($str=false,$filter = '',$default = false)
-{
-    if($str !== false)
-    {
-        $return = isset($_POST[$str])?$_POST[$str]:false;
-        if($return) {
-            switch ($filter) {
-                case 'int':
-                    if (!is_numeric($return)) {
-                        return $default;
-                    }
-                    break;
-                default:
-                    $return = htmlspecialchars($return);
-
-            }
-            return $return;
-        } else {
-            return $default;
-        }
-    } else {
-        return $_POST;
-    }
+function extName($type,$name){
+	return strtolower(end(explode($type,$name)));//打散字符串得到最后一个默认小写
 }
-

@@ -90,7 +90,7 @@ class phpcms
     {
         if(is_file(MODULE.'views/'.$file))
         {
-            extract($this->assign);
+            @extract($this->assign);
             include MODULE.'views/'.$file;
         } else {
             throw new Exception($file.'是一个不存在的模板文件');

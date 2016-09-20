@@ -8,7 +8,7 @@ namespace phpcms;
 
 class cache
 {
-    private $class;
+    private $caches;
     /**
      * 类自加载，获取路径
      */
